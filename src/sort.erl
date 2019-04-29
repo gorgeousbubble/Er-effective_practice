@@ -8,6 +8,7 @@
 %% API functions
 %% ====================================================================
 -export([bubble_sort/1]).
+-export([select_sort/1]).
 -export([quick_sort/1]).
 -export([insert_sort/1]).
 
@@ -36,6 +37,24 @@ bubble_sort_once(X, [H|T])	->
 	end.
 
 %% select sort
+select_sort(L)	->
+	select_sort(L, []).
+
+select_sort([], L)	->
+	L;
+select_sort([H|T], L)	->
+	X = select_sort_once(H, T),
+	select_sort([H|T] -- [X], L ++ [X]).
+
+select_sort_once(X, [])	->
+	X;
+select_sort_once(X, [H|T])	->
+	if
+		X > H	->
+			select_sort_once(H, T);
+		true	->
+			select_sort_once(X, T)
+	end.
 	
 %% quick sort
 quick_sort([])	->
