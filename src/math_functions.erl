@@ -8,6 +8,7 @@
 %% API functions
 %% ====================================================================
 -export([even/1, odd/1]).
+-export([filter/2]).
 -export([auto_test/0]).
 
 
@@ -27,6 +28,20 @@ odd(X) when is_integer(X)	->
 	case X rem 2 of
 		0	-> false;
 		1	-> true
+	end.
+
+%% filter function
+filter(F, L)	->
+	filter(F, L, []).
+
+filter(F, [], L)	->
+	L;
+filter(F, [H|T], L)	->
+	case F(H) of
+		true	->
+			filter(F, T, L ++ [H]);
+		false	->
+			filter(F, T, L)
 	end.
 
 %% auto_test function
