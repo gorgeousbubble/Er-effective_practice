@@ -1,0 +1,1 @@
+-recode(todo, {status=reminder, who=joe, text}).
