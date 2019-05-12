@@ -9,6 +9,7 @@
 %% ====================================================================
 -export([even/1, odd/1]).
 -export([filter/2]).
+-export([split/1, split2/1]).
 -export([auto_test/0]).
 
 
@@ -43,6 +44,18 @@ filter(F, [H|T], L)	->
 		false	->
 			filter(F, T, L)
 	end.
+
+%% split function
+split(L)	->
+	Odd = [X||X<-L, X rem 2 =:= 1],
+	Even = [X||X<-L, X rem 2 =:= 0],
+	{Even, Odd}.
+
+%% split2 function
+split2(L)	->
+	Odd = filter(fun(X) -> X rem 2 =:= 1 end, L),
+	Even = filter(fun(X) -> X rem 2 =:= 0 end, L),
+	{Even, Odd}.
 
 %% auto_test function
 auto_test()	->
