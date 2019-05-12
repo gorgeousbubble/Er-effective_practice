@@ -21,7 +21,9 @@ area({rectangle, Width, Height})	->
 area({square, Side})				->
 	Side * Side;
 area({circle, Radius})				->
-	3.1415926 * Radius * Radius.
+	3.1415926 * Radius * Radius;
+area({triangle, Length, Height})	->
+	Length * Height div 2.
 
 % area2 function
 area2(T)	->
@@ -32,6 +34,8 @@ area2(T)	->
 			Side * Side;
 		{circle, Radius}			->
 			3.1415926 * Radius * Radius;
+		{triangle, Length, Height}	->
+			Length * Height div 2;
 		_							->
 			undefined
 	end.
