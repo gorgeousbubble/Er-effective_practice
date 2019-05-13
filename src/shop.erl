@@ -29,7 +29,7 @@ total([])	->
 total([{Class, Number}|T])	->
 	Number * cost(Class) + total(T).
 
-%% auto test function
+%% auto_test function
 auto_test()	->
 	Buy = [{oranges, 4}, {newspaper, 1}, {apples, 10}, {pears, 6}, {milk, 3}],
 	total(Buy).
