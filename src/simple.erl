@@ -10,6 +10,8 @@
 -export([auto_test/0]).
 -export([sum/1]).
 -export([sum2/1]).
+-export([maximal/1]).
+-export([split/1]).
 
 %% ====================================================================
 %% Internal functions
@@ -46,3 +48,27 @@ sum2([])	->
 	0;
 sum2([H|T])	->
 	H + sum2(T).
+
+%% maximal function
+maximal([])	->
+	list_is_empty;
+maximal([H|T])	->
+	maximal(H, T).
+
+maximal(X, [])	->
+	X;
+maximal(X, [H|T])	->
+	if
+		H > X	->
+			maximal(H, T);
+		true	->
+			maximal(X, T)
+	end.
+
+%% split function
+split(L)	->
+	L1 = [X||X<-L, X rem 2 == 0],
+	L2 = [X||X<-L, X rem 2 == 1],
+	io:format("odd list:~p~n", [L1]),
+	io:format("even list:~p~n", [L2]).
+			
