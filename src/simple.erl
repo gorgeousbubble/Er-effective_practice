@@ -8,8 +8,8 @@
 %% API functions
 %% ====================================================================
 -export([auto_test/0]).
-
-
+-export([sum/1]).
+-export([sum2/1]).
 
 %% ====================================================================
 %% Internal functions
@@ -37,3 +37,12 @@ auto_test() ->
 	"Mike" = Name,
 	success.
 	
+%% sum function
+sum(L)	->
+	lists:foldl(fun(X, S) -> S + X end, 0, L).
+
+%% sum2 function
+sum2([])	->
+	0;
+sum2([H|T])	->
+	H + sum2(T).
