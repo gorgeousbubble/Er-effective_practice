@@ -1,0 +1,39 @@
+%% @author 10295
+%% @doc @todo Add description to simple.
+
+
+-module(simple).
+
+%% ====================================================================
+%% API functions
+%% ====================================================================
+-export([auto_test/0]).
+
+
+
+%% ====================================================================
+%% Internal functions
+%% ====================================================================
+
+%% auto_test function
+auto_test() ->
+	true 	=	(a == a),
+	4		=	(19 rem 5),
+	true	=	('zzz' == zzz),
+	false	=	'Erlang Programing' == "Erlang Programing",
+	false	=	'1+2+3' == 6,
+	true	=	[$E,$r,$i,$c,$s,$s,$o,$n,$ ,$S,$h,$a,$n,$g,$H,$a,$i] == "Ericsson ShangHai",
+	3		=	length([a,[b,[c,d,e],f],[g,h]]),
+	false	=	["Hello", "World"] == "Hello World",
+	false	=	[x|[y,z]] == [x|[y|z]],
+	false	=	[[1,2]|3] == [1,2,3],
+	[a,[b,c],d,e,[fg]] = [a,[b,c],d]++[e,[fg]],
+	[a,[b,c]]	=	[a,[b,c],d] -- [b,d],
+	[A|B] = [a,b],
+	[b] = B,
+	3 = tuple_size({abc,{def,123},ghi}),
+	Person = {person, "Mike", "Williams", [1,2,3,4]},
+	{person, Name, Surname, Phone} = Person,
+	"Mike" = Name,
+	success.
+	
